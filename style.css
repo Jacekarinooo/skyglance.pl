@@ -76,6 +76,7 @@ body {
 
 .search input {
     flex: 1;
+    min-width: 0;
     background: transparent;
     border: none;
     outline: none;
@@ -95,6 +96,7 @@ body {
     border-radius: 50%;
     width: 45px;
     height: 45px;
+    flex-shrink: 0;
     cursor: pointer;
     color: #1e3c72;
     font-size: 18px;
@@ -492,5 +494,17 @@ body {
 
     .cards-grid {
         grid-template-columns: 1fr 1fr;
+    }
+
+    .daily-item {
+        padding: 12px 15px;
+    }
+
+    .day-condition span {
+        display: none;
+    }
+
+    .day-condition img {
+        margin-right: 0;
     }
 }
