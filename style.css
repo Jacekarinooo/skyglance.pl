@@ -1,0 +1,435 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    position: relative;
+    background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1e3c72);
+    background-size: 300% 300%;
+    animation: gradientBG 20s ease infinite;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.dashboard {
+    width: 100%;
+    max-width: 850px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 25px;
+    padding: 40px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+    animation: fadeIn 1s ease-out;
+}
+
+.search-container {
+    margin-bottom: 30px;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 40px;
+    padding: 5px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: box-shadow 0.3s, background 0.3s;
+}
+
+.search:focus-within {
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+.search input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.search input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.search button {
+    background: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    color: #1e3c72;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.search button:hover {
+    transform: scale(1.15) rotate(10deg);
+}
+
+.weather-content {
+    display: none; 
+}
+
+.current-section {
+    text-align: center;
+    margin-bottom: 40px;
+    animation: slideUp 0.8s ease-out forwards;
+}
+
+.city-name {
+    font-size: 2.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.date-time {
+    font-size: 1rem;
+    font-weight: 300;
+    opacity: 0.8;
+    margin-bottom: 20px;
+}
+
+.temp-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.weather-icon {
+    width: 100px;
+    height: 100px;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2));
+    animation: float 6s ease-in-out infinite;
+}
+
+.temp {
+    font-size: 5rem;
+    font-weight: 600;
+    text-shadow: 4px 4px 20px rgba(0,0,0,0.2);
+}
+
+.condition {
+    font-size: 1.4rem;
+    font-weight: 400;
+    text-transform: capitalize;
+    margin-top: 5px;
+    background: rgba(255, 255, 255, 0.15);
+    display: inline-block;
+    padding: 5px 20px;
+    border-radius: 20px;
+}
+
+.highlights h3, .hourly-forecast h3, .daily-forecast h3 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+    opacity: 0.9;
+    padding-left: 10px;
+    border-left: 4px solid #fff;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+    margin-bottom: 40px;
+    animation: slideUp 0.8s ease-out 0.2s forwards;
+    opacity: 0;
+}
+
+@media (max-width: 1000px) {
+    .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.card {
+    background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+    height: 170px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.card .sub-label {
+    font-size: 0.75rem;
+    margin-top: 5px;
+    line-height: 1.2;
+    max-width: 90%;
+}
+
+.card .label {
+    font-size:
+    0.85rem;
+    opacity: 0.7;
+    letter-spacing: 0.5px;
+}
+
+.card .value {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-top: 8px;
+}
+
+.icon-faded {
+    position: absolute;
+    bottom: -10px;
+    right: 5px;
+    font-size: 3.5rem;
+    opacity: 0.1;
+    transition: transform 0.3s;
+}
+
+.card:hover .icon-faded {
+    transform: scale(1.2) rotate(-10deg);
+    opacity: 0.2;
+}
+
+.hourly-forecast {
+    margin-bottom: 40px;
+    animation: slideUp 0.8s ease-out 0.4s forwards;
+    opacity: 0;
+}
+
+.hourly-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 15px;
+    padding-top: 10px;
+    padding-bottom: 15px;
+}
+
+.hourly-container::-webkit-scrollbar {
+    height: 8px;
+}
+.hourly-container::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.05);
+    border-radius: 10px;
+}
+.hourly-container::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.3);
+    border-radius: 10px;
+}
+.hourly-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(255,255,255,0.5);
+}
+
+.hourly-item {
+    min-width: 90px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px 10px;
+    border-radius: 15px;
+    text-align: center;
+    transition: background 0.3s;
+}
+
+.hourly-item:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.hourly-item img {
+    width: 50px;
+    margin: 5px 0;
+}
+
+.daily-forecast {
+    animation: slideUp 0.8s ease-out 0.6s forwards;
+    opacity: 0;
+}
+
+.daily-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.08);
+    margin-bottom: 12px;
+    padding: 15px 25px;
+    border-radius: 18px;
+    transition: transform 0.2s, background 0.2s;
+}
+
+.daily-item:hover {
+    transform: scale(1.02);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.day-condition img {
+    width: 35px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.day-temp {
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.error-msg {
+    text-align: center;
+    background: rgba(255, 82, 82, 0.8);
+    padding: 15px;
+    border-radius: 15px;
+    margin-top: 20px;
+    animation: shake 0.5s ease-in-out;
+}
+
+.footer-section {
+    margin-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 15px;
+    text-align: center;
+}
+
+.info-btn {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: color 0.3s, transform 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 0 auto;
+    font-weight: 300;
+}
+
+.info-btn:hover {
+    color: #fff;
+}
+
+.info-content {
+    display: none;
+    margin-top: 15px;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.5;
+    text-align: center;
+    padding: 0 10px;
+    animation: fadeIn 0.5s ease;
+}
+
+.info-content strong {
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+}
+
+.info-content a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    border-bottom: 1px dotted rgba(255, 255, 255, 0.5);
+    transition: color 0.3s;
+}
+
+.info-content a:hover {
+    color: #fff;
+    border-bottom-style: solid;
+}
+
+.limit-warning {
+    margin-top: 8px;
+    font-style: italic;
+    color: rgba(255, 200, 200, 0.6);
+}
+
+.card, 
+.hourly-item, 
+.daily-item {
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), 
+                background 0.3s ease, 
+                box-shadow 0.3s ease,
+                border-color 0.3s ease !important;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.card:hover, 
+.hourly-item:hover, 
+.daily-item:hover {
+    transform: translateY(-6px) !important;
+    background: rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25) !important;
+    border-color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.daily-item:hover {
+    transform: translateY(-6px) scale(1) !important;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+@media (max-width: 600px) {
+    .dashboard { padding: 20px; }
+    .temp { font-size: 3.5rem; }
+    .city-name { font-size: 2rem; }
+    .weather-icon { width: 70px; height: 70px; }
+    .cards-grid { grid-template-columns: 1fr 1fr; }
+}

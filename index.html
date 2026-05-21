@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Widżet Pogodowy</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard">
+        <div class="search-container">
+            <div class="search">
+                <input type="text" id="search-input" placeholder="Wpisz miasto..." spellcheck="false">
+                <button id="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+        </div>
+
+        <div class="weather-content" style="display: none;">
+    
+        <div class="current-section">
+            <div class="main-info">
+                <h2 class="city-name">--</h2>
+                <p class="date-time">--</p>
+                <div class="temp-wrapper">
+                    <img src="" class="weather-icon" alt="Ikona">
+                    <h1 class="temp">--°C</h1>
+                </div>
+                <p class="condition">--</p>
+                <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 5px;">
+                Odczuwalna: <span class="feels-like">--</span>°C
+                </p>
+            </div>
+        </div>
+
+        <div class="highlights">
+            <h3>Szczegóły atmosferyczne</h3>
+                <div class="cards-grid">
+                    <div class="card highlight-card">
+                    <p class="label">Wilgotność</p>
+                    <p class="value humidity">--%</p>
+                    <i class="fa-solid fa-droplet icon-faded"></i>
+                </div>
+                <div class="card highlight-card">
+                    <p class="label">Wiatr</p>
+                    <p class="value wind">-- km/h</p>
+                    <p class="sub-label wind-dir" style="margin-top:0; font-size:0.7rem;">--</p>
+                    <i class="fa-solid fa-wind icon-faded"></i>
+                </div>
+                <div class="card highlight-card">
+                    <p class="label">Ciśnienie</p>
+                    <p class="value pressure">-- hPa</p>
+                    <i class="fa-solid fa-gauge-high icon-faded"></i>
+                </div>
+                    <div class="card highlight-card">
+                    <p class="label">Indeks UV</p>
+                    <p class="value uv-index">--</p>
+                    <i class="fa-solid fa-sun icon-faded"></i>
+                </div>
+                <div class="card highlight-card">
+                    <p class="label">Widoczność</p>
+                    <p class="value visibility">-- km</p>
+                    <i class="fa-solid fa-eye icon-faded"></i>
+                </div>
+                <div class="card highlight-card">
+                    <p class="label">Szansa opadów</p>
+                    <p class="value rain-chance">--%</p>
+                    <i class="fa-solid fa-cloud-showers-heavy icon-faded"></i>
+                </div>
+                <div class="card highlight-card">
+                    <p class="label">Jakość powietrza</p>
+                    <p class="value aqi">--</p>
+                    <p class="sub-label aqi-text" style="font-size:0.75rem;">--</p>
+                    <i class="fa-solid fa-lungs icon-faded"></i>
+                </div>
+                <div class="card highlight-card">
+                    <p class="label">Wschód słońca</p>
+                    <p class="value sunrise">--</p>
+                    <i class="fa-solid fa-sun icon-faded" style="transform: translateY(10px);"></i>
+                </div>
+                <div class="card highlight-card">
+                    <p class="label">Zachód słońca</p>
+                    <p class="value sunset">--</p>
+                    <i class="fa-solid fa-moon icon-faded"></i>
+                </div>
+                <div class="card highlight-card">
+                    <p class="label">Faza księżyca</p>
+                    <p class="value moon-phase" style="font-size: 1rem;">--</p>
+                    <i class="fa-solid fa-circle-notch icon-faded"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="hourly-forecast">
+            <h3>Prognoza godzinowa</h3>
+            <div class="hourly-container" id="hourly-container"></div>
+        </div>
+
+        <div class="daily-forecast">
+            <h3>Następne dni</h3>
+            <div class="daily-container" id="daily-container"></div>
+        </div>
+
+        <div class="error-msg" style="display: none;">
+            <p>Nie znaleziono miasta lub błąd API.</p>
+        </div>
+
+        <div class="footer-section">
+            <button id="info-btn" class="info-btn">
+                Informacje o widżecie <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            
+            <div id="info-content" class="info-content">
+                <p>Autor strony: <strong>Jacek Kowalczyk [44921]</strong></p>
+                <p>Dane pogodowe pobierane z <a href="https://www.weatherapi.com/" target="_blank">www.weatherapi.com</a>.</p>
+                <p class="limit-warning"><br>W ramach projektu wygenerowano API w darmowym planie.<br>Jeśli strona przestała działać prawidłowo, prawdopodobnie wyczerpano dzienny limit zawołań.<br>W takim przypadku spróbuj ponownie później.<br><br>Strona prosi o pozwolenie na użycie lokalizacji w celu określenia domyślnej miejscowości.<br>Jeśli nie zezwalasz na lokalizację, zostanie użyta ostatnio wyszukiwana miejscowość.<br>W szczególnych przypadkach domyślną lokalizacją jest miasto Warszawa.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
