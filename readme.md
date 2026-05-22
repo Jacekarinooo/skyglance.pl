@@ -11,5 +11,7 @@ This basic web app fetches information about current and upcoming weather in you
 # Running the project:
 
 http://skyglance.pl
+OR install android app
+skyglance.apk
 
 ![SkyGlance Icon](brand/sgicon-circle.png)
